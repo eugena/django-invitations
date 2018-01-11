@@ -80,5 +80,18 @@ class AppSettings(object):
         """
         return self._setting("INVITATION_MODEL", "invitations.Invitation")
 
+    @property
+    def REINITIALIZE_FORM(self):
+        """
+        If true - reinitialize the invitation form after successful email sending
+        """
+        return self._setting("REINITIALIZE_FORM", False)
+
+    @property
+    def TEMPLATE_INVITER_ATTRIBS(self):
+        """
+        A list of attributes of Inviter object for transferring into a email template
+        """
+        return self._setting("TEMPLATE_INVITER_ATTRIBS", tuple())
 
 app_settings = AppSettings('INVITATIONS_')

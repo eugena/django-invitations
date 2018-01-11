@@ -56,6 +56,9 @@ class Invitation(AbstractBaseInvitation):
             'key': self.key,
             'inviter': self.inviter,
         }
+        
+        for attr in app_settings.TEMPLATE_INVITER_ATTRIBS:
+            ctx.update({"inviter_%s" % attr: getattr(self.inviter, attr, None)})
 
         email_template = 'invitations/email/email_invite'
 
